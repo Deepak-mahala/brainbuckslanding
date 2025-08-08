@@ -22,7 +22,7 @@ export default function footer() {
   };
     return(
       <>
-        <div className="mx-auto bg-gray-700">
+        <div className="mx-auto bg-gray-700 text-white ">
           <div className="px-4 py-10 max-w-7xl mx-auto">
             <div className="flex flex-col md:flex-row gap-10 justify-center">
               <div className="">
