@@ -162,6 +162,16 @@ export default function Aboutus() {
   {
     name: "Dr. Amitabh Rajan",
     title: "IAS(79), Public Policy & Governance",
+    image: "/coreedu(11).jpeg",
+    description: "With decades in governance and policy, he continues to inspire educational transformation across the country.",
+    // email: "joeylenerivera@gmail.com",
+    linkedin: true,
+    linkedinLink:"https://www.linkedin.com/in/dr-amitabh-rajan-ias-a8a26abap/"
+    
+  },
+  {
+    name: "Dr. Amitabh Rajan",
+    title: "IAS(79), Public Policy & Governance",
     image: "/coreedu(12).jpeg",
     description: "With decades in governance and policy, he continues to inspire educational transformation across the country.",
     // email: "joeylenerivera@gmail.com",
