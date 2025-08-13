@@ -22,13 +22,13 @@ export default function Navbar() {
           </div>
 
           {/* Center: Nav links (hidden on mobile) */}
-          <div className="hidden md:flex space-x-6">
-            <a href="/" className="text-gray-700 hover:text-purple-700">Home</a>
-            <a href="/aboutus" className="text-gray-700 hover:text-purple-700">About Us</a>
-            <a href="/blogsbycategory" className="text-gray-700 hover:text-purple-700">Blogs</a>
-            <a href="/home" className="text-gray-700 hover:text-purple-700">How to Play</a>
-            <a href="/updates" className="text-gray-700 hover:text-purple-700">Updates</a>
-            <a href="/team" className="text-gray-700 hover:text-purple-700">Team</a>
+          <div className="hidden md:flex space-x-6 text-sm">
+            <a href="/" className="text-black hover:text-purple-700">Home</a>
+            <a href="/aboutus" className="text-black hover:text-purple-700">About Us</a>
+            <a href="/blogsbycategory" className="text-black hover:text-purple-700">Blogs</a>
+            <a href="/home" className="text-black hover:text-purple-700">How to Play</a>
+            <a href="/updates" className="text-black hover:text-purple-700">Updates</a>
+            <a href="/team" className="text-black hover:text-purple-700">Team</a>
           </div>
 
           {/* Right: Button (hidden on mobile) */}
@@ -57,12 +57,12 @@ export default function Navbar() {
       {/* Mobile dropdown menu */}
       {isOpen && (
         <div className="md:hidden bg-white px-4 pt-2 pb-4 shadow-md space-y-2">
-          <a href="/" className="block text-gray-700 hover:text-purple-700">Home</a>
-          <a href="/aboutus" className="block text-gray-700 hover:text-purple-700">About Us</a>
-          <a href="/blogsbycategory" className="block text-gray-700 hover:text-purple-700">Blogs</a>
-          <a href="/home" className="block text-gray-700 hover:text-purple-700">How to Play</a>
-          <a href="/updates" className="block text-gray-700 hover:text-purple-700">Updates</a>
-          <a href="/team" className="block text-gray-700 hover:text-purple-700">Team</a>
+          <a href="/" className="block text-black hover:text-purple-700">Home</a>
+          <a href="/aboutus" className="block text-black hover:text-purple-700">About Us</a>
+          <a href="/blogsbycategory" className="block text-black hover:text-purple-700">Blogs</a>
+          <a href="/home" className="block text-black hover:text-purple-700">How to Play</a>
+          <a href="/updates" className="block text-black hover:text-purple-700">Updates</a>
+          <a href="/team" className="block text-black hover:text-purple-700">Team</a>
           <a
             onClick={() => window.open(
               'https://play.google.com/store/apps/details?id=com.brainbucks.android',
