@@ -430,6 +430,9 @@ const BrainBucks = () => {
                             </div>
                         </div>
                     </div>
+                    <div className="flex justify-center mt-15">
+                    <a href='badges' className="block px-3 py-2 rounded-md text-base font-medium text-white cursor-pointer cta-button">View All Badges &rarr;</a>
+                    </div>
                 </div>
             </section>
 
