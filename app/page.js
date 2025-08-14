@@ -171,7 +171,48 @@ const BrainBucks = () => {
         background-color: #d946ef;
         box-shadow: 0 8px 30px rgba(192, 38, 211, 0.35);
     }
+
+       
+        .educator-card {
+            background-color: #ffffff;
+            border: 1px solid #e5e7eb;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .educator-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
 `;
+
+  const educators = [
+        {
+            initials: "AV",
+            name: "Dr. Anjali Verma",
+            subject: "NEET Biology Expert",
+            quote: "Making complex biology simple and memorable is my passion. Let's conquer NEET together!",
+        },
+        {
+            initials: "RS",
+            name: "Rohan Sharma",
+            subject: "JEE Physics Guru",
+            quote: "Physics is all about logic and fun. I create questions that challenge you and build a rock-solid foundation.",
+        },
+        {
+            initials: "PK",
+            name: "Priya Kapoor",
+            subject: "UPSC History & Polity",
+            quote: "Let's decode the story of India. My quizzes connect the past and present to help you ace the civil services.",
+        },
+        {
+            initials: "VJ",
+            name: "Vikram Joshi",
+            subject: "SSC & Banking Quant",
+            quote: "Quantitative Aptitude is a game of speed and accuracy. My quizzes are designed to make you a champion.",
+        },
+    ];
+
+    
 
     return (
         <div className="scroll-smooth">
@@ -496,6 +537,34 @@ const BrainBucks = () => {
                           '_blank'
                         )}
                          className="cta-button text-white font-bold py-3 px-8 rounded-full text-lg inline-block cursor-pointer">Become a BrainBucks Educator</a>
+                    </div>
+                </div>
+            </section>
+
+             <style dangerouslySetInnerHTML={{ __html: customStyles }}></style>
+
+            <section id="star-educators" className="py-20 hero-bg">
+                <div className="container mx-auto px-6">
+                    <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
+                        Meet Our <span className="animated-gradient-text">Star Educators</span>
+                    </h2>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                        {educators.map((educator, index) => (
+                            <div key={index} className="educator-card text-center p-6 rounded-xl">
+                                <img
+                                    src={`https://placehold.co/120x120/f3e8ff/c026d3?text=${educator.initials}`}
+                                    alt={`Educator ${educator.name}`}
+                                    width={120}
+                                    height={120}
+                                    className="w-28 h-28 rounded-full mx-auto mb-4 border-4 border-purple-600"
+                                />
+                                <h4 className="text-xl font-bold text-gray-900">{educator.name}</h4>
+                                <p className="text-pink-600 font-medium">{educator.subject}</p>
+                                <p className="text-gray-700 text-sm mt-2">
+                                    {`"${educator.quote}"`}
+                                </p>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </section>
