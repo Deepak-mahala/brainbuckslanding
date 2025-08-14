@@ -58,7 +58,7 @@ export default function Page(){
                     <div className="mt-8 flex gap-3">
                       <Link
                         href="#register"
-                        className="px-5 py-3 bg-indigo-600 text-white rounded-md font-medium shadow"
+                        className="px-5 py-3 bg-gradient-to-br from-indigo-600 to-purple-600 text-white rounded-md font-medium shadow"
                       >
                         Get Started — Join Now
                       </Link>
