@@ -1,8 +1,9 @@
 "use client";
-import React, { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 // import Image from 'next/image';
 import Footer from "./footer"
+import Link from 'next/link';
 
 const BrainBucks = () => {
     useEffect(() => {
@@ -92,6 +93,85 @@ const BrainBucks = () => {
             clearInterval(winnerInterval);
         };
     }, []);
+
+    const targetDate = new Date("2025-12-31T23:59:59").getTime();
+
+    const [timeLeft, setTimeLeft] = useState({
+        days: "00",
+        hours: "00",
+        minutes: "00",
+        seconds: "00",
+    });
+
+     useEffect(() => {
+        const calculateTimeLeft = () => {
+            const now = new Date().getTime();
+            const distance = targetDate - now;
+
+            if (distance < 0) {
+                // Timer has expired
+                return { days: "00", hours: "00", minutes: "00", seconds: "00" };
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            // Format numbers with leading zeros
+            const formatNumber = (num) => num.toString().padStart(2, '0');
+
+            return {
+                days: formatNumber(days),
+                hours: formatNumber(hours),
+                minutes: formatNumber(minutes),
+                seconds: formatNumber(seconds),
+            };
+        };
+
+        const timer = setInterval(() => {
+            setTimeLeft(calculateTimeLeft());
+        }, 1000);
+
+        // Clear the interval on component unmount to prevent memory leaks
+        return () => clearInterval(timer);
+    }, [targetDate]);
+
+    const customStyles = `
+    .hero-bg {
+        background-color: #f9fafb;
+    }
+    .section-bg-alt {
+        background-color: #f3e8ff;
+    }
+    .animated-gradient-text {
+        background: linear-gradient(90deg, #a855f7, #c026d3, #f472b6, #fb923c, #a855f7);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: gradient-animation 8s ease infinite;
+        background-size: 250% 250%;
+    }
+    @keyframes gradient-animation {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+    }
+    .countdown-box {
+        background-color: #f3e8ff;
+        border: 1px solid #d946ef;
+        box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    }
+    .cta-button-alt {
+        transition: all 0.3s ease-in-out;
+        background-color: #c026d3;
+        box-shadow: 0 4px 20px rgba(192, 38, 211, 0.25);
+    }
+    .cta-button-alt:hover {
+        transform: translateY(-4px) scale(1.05);
+        background-color: #d946ef;
+        box-shadow: 0 8px 30px rgba(192, 38, 211, 0.35);
+    }
+`;
 
     return (
         <div className="scroll-smooth">
@@ -498,6 +578,49 @@ const BrainBucks = () => {
                             </p>
                         </details>
                     </div>
+                </div>
+            </section>
+
+             <style jsx global>{customStyles}</style>
+
+            <section id="abc-quiz" className="py-20 hero-bg">
+                <div className="container mx-auto px-6 text-center">
+                    <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900">
+                        THE ABC MEGA QUIZ IS HERE!
+                    </h2>
+                    <p className="text-2xl md:text-3xl font-bold mt-2 mb-4">
+                        Aap Banoge <span className="animated-gradient-text">Crorepati</span>
+                    </p>
+                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                        India's biggest educational quiz tournament. Are you ready for the ultimate challenge?
+                    </p>
+                    <div className="my-10 p-8 countdown-box rounded-2xl max-w-3xl mx-auto shadow-2xl">
+                        <p className="text-xl font-semibold text-gray-700">
+                            Next Mega Quiz Starts In:
+                        </p>
+                        <div id="countdown" className="flex justify-center space-x-2 sm:space-x-4 mt-4 text-gray-900">
+                            <div className="countdown-box p-3 sm:p-4 rounded-lg w-20 sm:w-24">
+                                <div id="days" className="text-3xl sm:text-4xl font-bold">{timeLeft.days}</div>
+                                <div className="text-xs sm:text-sm text-purple-600">Days</div>
+                            </div>
+                            <div className="countdown-box p-3 sm:p-4 rounded-lg w-20 sm:w-24">
+                                <div id="hours" className="text-3xl sm:text-4xl font-bold">{timeLeft.hours}</div>
+                                <div className="text-xs sm:text-sm text-purple-600">Hours</div>
+                            </div>
+                            <div className="countdown-box p-3 sm:p-4 rounded-lg w-20 sm:w-24">
+                                <div id="minutes" className="text-3xl sm:text-4xl font-bold">{timeLeft.minutes}</div>
+                                <div className="text-xs sm:text-sm text-purple-600">Minutes</div>
+                            </div>
+                            <div className="countdown-box p-3 sm:p-4 rounded-lg w-20 sm:w-24">
+                                <div id="seconds" className="text-3xl sm:text-4xl font-bold">{timeLeft.seconds}</div>
+                                <div className="text-xs sm:text-sm text-purple-600">Seconds</div>
+                            </div>
+                        </div>
+                    </div>
+                    {/* The original code uses a simple anchor tag for the CTA */}
+                    <a href="#download" className="cta-button-alt text-white font-bold py-4 px-10 rounded-full text-xl inline-block hover:bg-purple-600">
+                        Register for ABC Quiz Now!
+                    </a>
                 </div>
             </section>
 
