@@ -1,3 +1,4 @@
+"use client";
 import React from 'react';
 import { Sparkles, Trophy, Rocket, Globe } from 'lucide-react';
 
@@ -30,18 +31,18 @@ const StudentLeaderboard = () => {
             title: 'Quiz Master',
             icon: <Trophy className="w-16 h-16 text-purple-600" />,
             winners: [
-                { name: 'Mohit P.', city: 'Delhi', score: '50 Quizzes Jeete', avatar: 'M', avatarColor: '7c3aed' },
-                { name: 'Sneha T.', city: 'Chennai', score: '45 Quizzes Jeete', avatar: 'S', avatarColor: '8b5cf6' },
-                { name: 'Arjun B.', city: 'Bengaluru', score: '42 Quizzes Jeete', avatar: 'A', avatarColor: 'a78bfa' }
+                { name: 'Mohit P.', city: 'Delhi', score: '50 Quizzes Win', avatar: 'M', avatarColor: '7c3aed' },
+                { name: 'Sneha T.', city: 'Chennai', score: '45 Quizzes Win', avatar: 'S', avatarColor: '8b5cf6' },
+                { name: 'Arjun B.', city: 'Bengaluru', score: '42 Quizzes Win', avatar: 'A', avatarColor: 'a78bfa' }
             ]
         },
         {
             title: 'Subject Pro',
             icon: <Rocket className="w-16 h-16 text-pink-500" />,
             winners: [
-                { name: 'Simran L.', city: 'Mumbai', score: '10 Subject me Mastery', avatar: 'S', avatarColor: 'db2777' },
-                { name: 'Vivek K.', city: 'Nagpur', score: '8 Subject me Mastery', avatar: 'V', avatarColor: 'ec4899' },
-                { name: 'Nisha S.', city: 'Pune', score: '7 Subject me Mastery', avatar: 'N', avatarColor: 'f472b6' }
+                { name: 'Simran L.', city: 'Mumbai', score: 'Mastery in 10 Subjects', avatar: 'S', avatarColor: 'db2777' },
+                { name: 'Vivek K.', city: 'Nagpur', score: 'Mastery in 8 Subjects', avatar: 'V', avatarColor: 'ec4899' },
+                { name: 'Nisha S.', city: 'Pune', score: 'Mastery in 7 Subjects', avatar: 'N', avatarColor: 'f472b6' }
             ]
         },
         {

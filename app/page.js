@@ -6,29 +6,14 @@ import Footer from "./footer"
 
 const BrainBucks = () => {
     useEffect(() => {
-        // Mobile menu toggle
-        // const mobileMenuButton = document.getElementById('mobile-menu-button');
-        // const mobileMenu = document.getElementById('mobile-menu');
-        // const toggleMobileMenu = () => {
-        //     mobileMenu.classList.toggle('hidden');
-        // };
-        // mobileMenuButton.addEventListener('click', toggleMobileMenu);
-
-        // document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        //     anchor.addEventListener('click', () => {
-        //         if (!mobileMenu.classList.contains('hidden')) {
-        //             mobileMenu.classList.add('hidden');
-        //         }
-        //     });
-        // });
 
         // App Screen Changer
         const appScreen = document.getElementById('app-screen');
         const screenButtons = document.querySelectorAll('.app-screen-btn');
         const screens = [
             '/brainbucks3.png',
-            '/brainbucksimg2.png',
-            '/brainbucks4.png'
+            '/brainbucks4.png',
+            '/brainbucksimg2.png'
         ];
 
         window.changeScreen = (index) => {
@@ -121,7 +106,7 @@ const BrainBucks = () => {
             </Head>
             <style jsx global>{`
                 body {
-                    font-family: 'Inter', sans-serif;
+                    {/* font-family: 'Inter', sans-serif; */}
                     background-color: #FFFFFF;
                     color: #1f2937;
                 }
@@ -189,39 +174,6 @@ const BrainBucks = () => {
                 }
             `}</style>
             
-            {/* Header */}
-            {/* <header id="header" className="header fixed w-full top-0 z-50">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex items-center justify-between h-20">
-                        <div className="flex-shrink-0">
-                            <a href="#" className="text-3xl font-extrabold animated-gradient-text">BrainBucks</a>
-                        </div>
-                        <nav className="hidden md:flex items-center space-x-8">
-                            <a href="#app-in-action" className="font-medium text-gray-600 hover:text-purple-700 transition-colors">The App</a>
-                            <a href="#todays-arena" className="font-medium text-gray-600 hover:text-purple-700 transition-colors">Live Arena</a>
-                            <a href="#educators" className="font-medium text-gray-600 hover:text-purple-700 transition-colors">Educators</a>
-                            <a href="#faq" className="font-medium text-gray-600 hover:text-purple-700 transition-colors">FAQ</a>
-                        </nav>
-                        <div className="hidden md:block">
-                            <a href="#download" className="cta-button text-white font-bold py-2 px-5 rounded-lg transition-all">Download App</a>
-                        </div>
-                        <div className="md:hidden">
-                            <button id="mobile-menu-button" className="text-gray-700 hover:text-purple-700">
-                                <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" /></svg>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-                <div id="mobile-menu" className="md:hidden hidden bg-white/95 backdrop-blur-sm">
-                    <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-                        <a href="#app-in-action" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-purple-700 hover:bg-purple-50">The App</a>
-                        <a href="#todays-arena" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-purple-700 hover:bg-purple-50">Live Arena</a>
-                        <a href="#educators" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-purple-700 hover:bg-purple-50">Educators</a>
-                        <a href="#faq" className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-purple-700 hover:bg-purple-50">FAQ</a>
-                        <a href="#download" className="block px-3 py-2 rounded-md text-base font-medium text-purple-700 hover:text-white hover:bg-purple-700">Download App</a>
-                    </div>
-                </div>
-            </header> */}
 
             {/* Hero Section */}
             <main className="hero-bg pt-28 pb-10">
@@ -261,7 +213,7 @@ const BrainBucks = () => {
                           id="app-screen"
                           src="/brainbucks3.png"
                           alt="App Screen"
-                          className="w-full h-full object-cover transition-opacity duration-500"
+                          className="w-100 mt-14 object-cover transition-opacity duration-500"
                         />
                       </div>
                       </div>
@@ -578,21 +530,6 @@ const BrainBucks = () => {
                     </div>
                 </div>
             </section>
-
-            {/* Footer */}
-            {/* <footer className="bg-gray-900 py-8">
-                <div className="container mx-auto px-6 text-center text-gray-400">
-                    <div className="flex justify-center flex-wrap gap-x-6 gap-y-2 mb-4">
-                        <a href="#" className="hover:text-white transition-colors">About Us</a>
-                        <a href="#" className="hover:text-white transition-colors">Contact</a>
-                        <a href="#" className="hover:text-white transition-colors">Careers</a>
-                        <a href="#" className="hover:text-white transition-colors">For Investors</a>
-                        <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-                        <a href="#" className="hover:text-white transition-colors">Terms & Conditions</a>
-                    </div>
-                    <p>&copy; 2025 BrainBucks. All Rights Reserved.</p>
-                </div>
-            </footer> */}
             <Footer/>
         </div>
     );
