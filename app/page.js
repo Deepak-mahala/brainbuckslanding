@@ -51,11 +51,11 @@ const BrainBucks = () => {
 
         // Live Winner Feed
         const winners = [
-            { name: "Priya S.", amount: 50, subject: "Biology" },
-            { name: "Amit K.", amount: 25, subject: "Physics" },
-            { name: "Rohan V.", amount: 100, subject: "UPSC History" },
-            { name: "Sneha M.", amount: 75, subject: "Quant" },
-            { name: "Vikas G.", amount: 50, subject: "Chemistry" }
+            { name: "Priya S.", amount: 50000, subject: "Biology" },
+            { name: "Amit K.", amount: 2500, subject: "Physics" },
+            { name: "Rohan V.", amount: 1000, subject: "UPSC History" },
+            { name: "Sneha M.", amount: 7500, subject: "Quant" },
+            { name: "Vikas G.", amount: 5000, subject: "Chemistry" }
         ];
         const feedContainer = document.getElementById('winner-feed-container');
         let winnerIndex = 0;
@@ -224,7 +224,7 @@ const BrainBucks = () => {
             </header> */}
 
             {/* Hero Section */}
-            <main className="hero-bg pt-32 pb-20">
+            <main className="hero-bg pt-28 pb-10">
                 <div className="container mx-auto px-6 text-center">
                     <h1 className="text-4xl md:text-6xl font-extrabold leading-tight mb-4 text-gray-900">
                         Learn Smarter, Not Harder.<br />Win <span className="animated-gradient-text">Real Cash</span> Daily!
@@ -245,7 +245,7 @@ const BrainBucks = () => {
             </main>
 
             {/* App in Action Section */}
-            <section id="app-in-action" className="py-20">
+            <section id="app-in-action" className="py-14">
                 <div className="container mx-auto px-6">
                     <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">The App in Action</h2>
                    <div className="flex justify-center">
@@ -276,9 +276,9 @@ const BrainBucks = () => {
             </section>
 
             {/* Philosophy Section */}
-            <section id="philosophy" className="py-20 section-bg-alt">
+            <section id="philosophy" className="py-10 md:py-22 section-bg-alt">
                 <div className="container mx-auto px-6 text-center">
-                    <h2 className="text-3xl md:text-4xl font-bold  text-purple-800 font-hindi"> ब्रेनबक्स की आदत अच्छी है।</h2>
+                    <h2 className="text-2xl md:text-4xl font-bold  text-purple-800 font-hindi"> ब्रेनबक्स की आदत अच्छी है।</h2>
                     <p className="text-lg md:text-xl text-gray-700 max-w-3xl mx-auto mt-4">
                         Stop wasting time on distracting apps. With BrainBucks, you get entertainment and career preparation, all in one place. This is productive entertainment.
                         <br /><span className="font-bold text-gray-900 mt-2 block font-hindi">#बुरी आदत छोड़ो, अच्छी आदत लगाओ।</span>
@@ -287,7 +287,7 @@ const BrainBucks = () => {
             </section>
 
             {/* Exams Covered Section */}
-            <section id="exams" className="py-20">
+            <section id="exams" className="py-16">
                 <div className="container mx-auto px-6">
                     <h2 className="text-3xl md:text-4xl font-bold text-center mb-4 text-gray-900">Exams We Cover</h2>
                     <p className="text-center text-gray-600 mb-12">And many more state-level exams coming soon!</p>
@@ -303,7 +303,7 @@ const BrainBucks = () => {
             </section>
 
             {/* Today's Arena Section */}
-            <section id="todays-arena" className="py-20 section-bg-alt">
+            <section id="todays-arena" className="py-14 section-bg-alt">
                 <div className="container mx-auto px-6">
                     <h2 className="text-3xl md:text-4xl font-bold text-center mb-2 text-gray-900">Today&apos;s Live Arena</h2>
                     <p className="text-center text-lg text-pink-600 font-semibold mb-12">Where Everyone Wins!</p>
@@ -373,7 +373,7 @@ const BrainBucks = () => {
             </section>
 
             {/* Student Leaderboard & Badges Section */}
-            <section id="student-leaderboard" className="py-20">
+            <section id="student-leaderboard" className="py-14">
                 <div className="container mx-auto px-6">
                     <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">Student <span className="animated-gradient-text">Leaderboard & Badges</span></h2>
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -388,7 +388,7 @@ const BrainBucks = () => {
                                         <p className="font-semibold text-gray-800">Vikram S.</p>
                                         <p className="text-sm text-gray-500">Indore</p>
                                     </div>
-                                    <p className="ml-auto font-bold text-green-600">₹1,500</p>
+                                    <p className="ml-auto font-bold text-green-600">₹1,50,000</p>
                                 </li>
                                 <li className="flex items-center space-x-4">
                                     <span className="text-lg font-bold text-gray-400">2.</span>
@@ -397,7 +397,7 @@ const BrainBucks = () => {
                                         <p className="font-semibold text-gray-800">Priya M.</p>
                                         <p className="text-sm text-gray-500">Nagpur</p>
                                     </div>
-                                    <p className="ml-auto font-bold text-green-600">₹1,250</p>
+                                    <p className="ml-auto font-bold text-green-600">₹1,20,500</p>
                                 </li>
                                 <li className="flex items-center space-x-4">
                                     <span className="text-lg font-bold text-orange-500">3.</span>
@@ -406,7 +406,7 @@ const BrainBucks = () => {
                                         <p className="font-semibold text-gray-800">Sameer K.</p>
                                         <p className="text-sm text-gray-500">Bhopal</p>
                                     </div>
-                                    <p className="ml-auto font-bold text-green-600">₹1,000</p>
+                                    <p className="ml-auto font-bold text-green-600">₹1,00,000</p>
                                 </li>
                             </ul>
                         </div>
@@ -434,7 +434,7 @@ const BrainBucks = () => {
             </section>
 
             {/* For Educators Section */}
-            <section id="educators" className="py-20">
+            <section id="educators" className="py-8">
                 <div className="container mx-auto px-6">
                     <div className="text-center max-w-3xl mx-auto">
                         <h2 className="text-3xl md:text-4xl font-bold text-gray-900">Don&apos;t Just Teach. <span className="animated-gradient-text">Build an Empire.</span></h2>
@@ -466,7 +466,7 @@ const BrainBucks = () => {
             </section>
 
             {/* Blog Section */}
-            <section id="blog" className="py-20 section-bg-alt">
+            <section id="blog" className="py-12 section-bg-alt">
                 <div className="container mx-auto px-6">
                     <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">From Our <span className="animated-gradient-text">Blog</span></h2>
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -502,7 +502,7 @@ const BrainBucks = () => {
             </section>
 
             {/* FAQ Section */}
-            <section id="faq" className="py-20">
+            <section id="faq" className="py-12">
                 <div className="container mx-auto px-6 max-w-4xl">
                     <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">Frequently Asked Questions</h2>
                     <div className="space-y-4">

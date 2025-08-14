@@ -109,7 +109,7 @@ export default function footer() {
       </div>
 
       <div >
-      <h1 className="text-center p-3"> ©️All Rights Reserved | Tech Brainbucks Infosoft Private Limited</h1> 
+      <h1 className="text-center p-3 bg-gray-800 text-white"> ©️All Rights Reserved | Tech Brainbucks Infosoft Private Limited</h1> 
       </div>
       </>
     )
