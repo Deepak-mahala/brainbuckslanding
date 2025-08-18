@@ -79,11 +79,11 @@ const StudentLeaderboard = () => {
                                         className={`w-10 h-10 rounded-full ring-2 ring-${topper.avatarColor.replace('a855f7', 'purple-500').replace('c026d3', 'fuchsia-500').replace('f472b6', 'pink-500').replace('6366f1', 'indigo-500').replace('4f46e5', 'indigo-600')}`}
                                         alt="Topper avatar"
                                     />
-                                    <div className="flex-grow">
-                                        <p className="font-semibold text-gray-800">{topper.name}</p>
-                                        <p className="text-sm text-gray-500">{topper.city}</p>
+                                    <div className="flex-grow min-w-0">
+                                        <p className="font-semibold text-gray-800 truncate">{topper.name}</p>
+                                        <p className="text-sm text-gray-500 truncate">{topper.city}</p>
                                     </div>
-                                    <p className="ml-auto font-bold text-green-600">{topper.amount}</p>
+                                    <p className="ml-auto font-bold text-green-600 min-w-0 text-right">{topper.amount}</p>
                                 </li>
                             ))}
                         </ul>
@@ -105,11 +105,11 @@ const StudentLeaderboard = () => {
                                                 className="w-10 h-10 rounded-full ring-2 ring-gray-400"
                                                 alt="Badge winner avatar"
                                             />
-                                            <div className="flex-grow text-left">
-                                                <p className="font-semibold text-gray-800">{winner.name}</p>
-                                                <p className="text-sm text-gray-500">{winner.city}</p>
+                                            <div className="flex-grow text-left min-w-0">
+                                                <p className="font-semibold text-gray-800 truncate">{winner.name}</p>
+                                                <p className="text-sm text-gray-500 truncate">{winner.city}</p>
                                             </div>
-                                            <p className="font-bold text-gray-700 whitespace-nowrap">{winner.score}</p>
+                                            <p className="font-bold text-gray-700 text-right text-sm sm:text-base">{winner.score}</p>
                                         </li>
                                     ))}
                                 </ul>

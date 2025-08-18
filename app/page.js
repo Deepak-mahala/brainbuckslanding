@@ -5,7 +5,37 @@ import Head from 'next/head';
 import Footer from "./footer"
 import Link from 'next/link';
 
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/autoplay';
+
+// Import required modules
+import { Pagination, Autoplay } from 'swiper/modules';
+import { useRouter } from 'next/navigation';
+
 const BrainBucks = () => {
+    const router = useRouter()
+
+    const IMAGE_BASE_URL = 'https://auth.brainbucks.in/stream/get/public?blobname='
+    const [blogPosts, setBlogPosts] = useState([])
+
+    const fetchBlogs = async () => {
+        const response = await fetch('https://prerec.brainbucks.in/learning/page/get/latest/blog?page=1&limit=10', { method: "GET", headers: { "Content-Type": "Application/Json" } })
+
+        const data =await response.json()
+        if (data) {
+            setBlogPosts(data.blogs)
+        }
+    }
+
+    console.log(blogPosts)
+
+
+    useEffect(() => {
+        fetchBlogs();
+    }, []);
+
     useEffect(() => {
 
         // App Screen Changer
@@ -80,18 +110,18 @@ const BrainBucks = () => {
             // Cleanup function for event listener
             return () => details.removeEventListener('toggle', handleToggle);
         });
-        
+
         // Initial call on component mount
         showNextWinner();
 
         // Cleanup on unmount
-        return () => {
-            mobileMenuButton.removeEventListener('click', toggleMobileMenu);
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.removeEventListener('click', () => mobileMenu.classList.add('hidden'));
-            });
-            clearInterval(winnerInterval);
-        };
+        // return () => {
+        //     mobileMenuButton.removeEventListener('click', toggleMobileMenu);
+        //     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        //         anchor.removeEventListener('click', () => mobileMenu.classList.add('hidden'));
+        //     });
+        //     clearInterval(winnerInterval);
+        // };
     }, []);
 
     const targetDate = new Date("2025-12-31T23:59:59").getTime();
@@ -103,7 +133,7 @@ const BrainBucks = () => {
         seconds: "00",
     });
 
-     useEffect(() => {
+    useEffect(() => {
         const calculateTimeLeft = () => {
             const now = new Date().getTime();
             const distance = targetDate - now;
@@ -185,34 +215,73 @@ const BrainBucks = () => {
         }
 `;
 
-  const educators = [
+    const educators = [
         {
-            initials: "AV",
-            name: "Dr. Anjali Verma",
-            subject: "NEET Biology Expert",
-            quote: "Making complex biology simple and memorable is my passion. Let's conquer NEET together!",
+            initials: "/rajendra.jpeg",
+            name: "Rajendra Singh Maderna",
+            subject: "RAJ. GK Expert",
+            quote: "with 20+ years’ experience, has guided thousands of students to success in competitive exams through his mastery of the state’s history, culture, and geography",
         },
         {
-            initials: "RS",
-            name: "Rohan Sharma",
-            subject: "JEE Physics Guru",
-            quote: "Physics is all about logic and fun. I create questions that challenge you and build a rock-solid foundation.",
+            initials: "/coreedu(3).jpeg",
+            name: "Jitendra Singh Chauhan",
+            subject: "Chauhan Publication House",
+            quote: "Rajasthan GK & Current Affairs expert with 27+ years’ experience, has mentored countless aspirants, helping them excel in competitive exams with his vast knowledge and insightful teaching",
         },
         {
-            initials: "PK",
-            name: "Priya Kapoor",
-            subject: "UPSC History & Polity",
-            quote: "Let's decode the story of India. My quizzes connect the past and present to help you ace the civil services.",
+            initials: "/coreedu(10).jpeg",
+            name: "Dr. Pawan Gupta",
+            subject: "Ex. Allen, Aakash, Career Point",
+            quote: "NEET Physics faculty with 19+ years’ experience, is known for his clear concepts and result-oriented teaching, guiding countless students to top ranks in medical entrance exams.",
         },
         {
-            initials: "VJ",
-            name: "Vikram Joshi",
-            subject: "SSC & Banking Quant",
-            quote: "Quantitative Aptitude is a game of speed and accuracy. My quizzes are designed to make you a champion.",
+            initials: "/coreedu(9).jpeg",
+            name: "KD Sir",
+            subject: "Ex. Allen, Motion, Career Point & Daswani Classes",
+            quote: "Physics faculty with 25 years’ experience, is known for simplifying complex concepts and guiding students to top exam results.",
         },
     ];
 
-    
+    // const blogPosts = [
+    //     {
+    //         imageSrc: "/public (4).png",
+    //         category: "Study Tips",
+    //         title: "5 Killer Strategies to Crack NEET in Your First Attempt",
+    //         link: "readAsSomewhere",
+    //     },
+    //     {
+    //         imageSrc: "/public (3).png",
+    //         category: "Motivation",
+    //         title: "How Gamification is Making Learning Fun Again",
+    //         link: "readAsSomewhere",
+    //     },
+    //     {
+    //         imageSrc: "/public (5).png",
+    //         category: "Success Story",
+    //         title: "From Village to Victory: A BrainBucks Winner's Journey",
+    //         link: "readAsSomewhere",
+    //     },
+    //     {
+    //         imageSrc: "/public (6).png",
+    //         category: "Exam Prep",
+    //         title: "Mastering Time Management for Board Exams",
+    //         link: "readAsSomewhere",
+    //     },
+    //     {
+    //         imageSrc: "/public (7).png",
+    //         category: "Career Guidance",
+    //         title: "The Future of AI in Education: What Students Need to Know",
+    //         link: "readAsSomewhere",
+    //     },
+    //     {
+    //         imageSrc: "/public (8).png",
+    //         category: "Mental Health",
+    //         title: "Balancing Academics and Well-being: A Guide for Students",
+    //         link: "readAsSomewhere",
+    //     }
+    // ];
+
+
 
     return (
         <div className="scroll-smooth">
@@ -294,7 +363,7 @@ const BrainBucks = () => {
                     10%, 90% { opacity: 1; transform: translateY(0); }
                 }
             `}</style>
-            
+
 
             {/* Hero Section */}
             <main className="hero-bg pt-28 pb-10">
@@ -307,11 +376,11 @@ const BrainBucks = () => {
                         <span className="font-semibold text-gray-800">Turn your screen time into earning time.</span>
                     </p>
                     <a
-                     onClick={() => window.open(
+                        onClick={() => window.open(
                             'https://play.google.com/store/apps/details?id=com.brainbucks.android',
-                    '_blank'
-                          )} 
-                     href="#download" className="cta-button text-white font-bold py-4 px-8 rounded-full text-lg inline-block">
+                            '_blank'
+                        )}
+                        href="#download" className="cta-button text-white font-bold py-4 px-8 rounded-full text-lg inline-block">
                         Download App & Get ₹10 Bonus
                     </a>
                 </div>
@@ -321,23 +390,23 @@ const BrainBucks = () => {
             <section id="app-in-action" className="py-14">
                 <div className="container mx-auto px-6">
                     <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">The App in Action</h2>
-                   <div className="flex justify-center">
-                    <div className="relative w-[260px] h-[520px]">
-                      <img
-                        src="https://placehold.co/260x520/1f2937/ffffff?text="
-                        alt="Phone frame"
-                        className="w-full h-full rounded-[40px]"
-                      />
-                      
-                      <div className="absolute top-[10px] left-[10px] right-[10px] bottom-[10px] overflow-hidden rounded-[24px]">
-                        <img
-                          id="app-screen"
-                          src="/brainbucks3.png"
-                          alt="App Screen"
-                          className="w-100 mt-14 object-cover transition-opacity duration-500"
-                        />
-                      </div>
-                      </div>
+                    <div className="flex justify-center">
+                        <div className="relative w-[260px] h-[520px]">
+                            <img
+                                src="https://placehold.co/260x520/1f2937/ffffff?text="
+                                alt="Phone frame"
+                                className="w-full h-full rounded-[40px]"
+                            />
+
+                            <div className="absolute top-[10px] left-[10px] right-[10px] bottom-[10px] overflow-hidden rounded-[24px]">
+                                <img
+                                    id="app-screen"
+                                    src="/brainbucks3.png"
+                                    alt="App Screen"
+                                    className="w-100 mt-14 object-cover transition-opacity duration-500"
+                                />
+                            </div>
+                        </div>
                     </div>
 
                     <div className="flex justify-center gap-4 mt-8">
@@ -390,11 +459,11 @@ const BrainBucks = () => {
                                         <p className="font-bold text-purple-800">NEET: Full Biology Mock</p>
                                         <p className="text-sm text-gray-600">By Dr. Anjali Verma | Prize: ₹5,000</p>
                                     </div>
-                                    <a  onClick={() => window.open(
-                                      'https://play.google.com/store/apps/details?id=com.brainbucks.android',
-                                      '_blank'
-                                    )} 
-                                    className="bg-pink-500 cursor-pointer text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-pink-600">Play Now</a>
+                                    <a onClick={() => window.open(
+                                        'https://play.google.com/store/apps/details?id=com.brainbucks.android',
+                                        '_blank'
+                                    )}
+                                        className="bg-pink-500 cursor-pointer text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-pink-600">Play Now</a>
                                 </div>
                                 <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm">
                                     <div>
@@ -402,23 +471,35 @@ const BrainBucks = () => {
                                         <p className="text-sm text-gray-600">By Priya Kapoor | Prize: ₹3,500</p>
                                     </div>
                                     <a
-                                     onClick={() => window.open(
-                                                'https://play.google.com/store/apps/details?id=com.brainbucks.android',
-                                        '_blank'
-                                              )} 
-                                     className="bg-pink-500 cursor-pointer text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-pink-600">Play Now</a>
+                                        onClick={() => window.open(
+                                            'https://play.google.com/store/apps/details?id=com.brainbucks.android',
+                                            '_blank'
+                                        )}
+                                        className="bg-pink-500 cursor-pointer text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-pink-600">Play Now</a>
                                 </div>
                                 <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm">
                                     <div>
                                         <p className="font-bold text-purple-800">JEE: Kinematics Challenge</p>
                                         <p className="text-sm text-gray-600">By Rohan Sharma | Prize: ₹4,000</p>
                                     </div>
-                                    <a 
-                                     onClick={() => window.open(
+                                    <a
+                                        onClick={() => window.open(
                                             'https://play.google.com/store/apps/details?id=com.brainbucks.android',
-                                    '_blank'
-                                          )}
-                                      className="bg-pink-500 cursor-pointer text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-pink-600">Play Now</a>
+                                            '_blank'
+                                        )}
+                                        className="bg-pink-500 cursor-pointer text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-pink-600">Play Now</a>
+                                </div>
+                                <div className="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm">
+                                    <div>
+                                        <p className="font-bold text-purple-800">JEE: Kinematics Challenge</p>
+                                        <p className="text-sm text-gray-600">By Rohan Sharma | Prize: ₹4,000</p>
+                                    </div>
+                                    <a
+                                        onClick={() => window.open(
+                                            'https://play.google.com/store/apps/details?id=com.brainbucks.android',
+                                            '_blank'
+                                        )}
+                                        className="bg-pink-500 cursor-pointer text-white font-bold py-2 px-4 rounded-lg text-sm hover:bg-pink-600">Play Now</a>
                                 </div>
                             </div>
                         </div>
@@ -442,6 +523,49 @@ const BrainBucks = () => {
                             </div>
                         </div>
                     </div>
+                </div>
+            </section>
+
+            <style jsx global>{customStyles}</style>
+
+            <section id="abc-quiz" className="py-20 hero-bg">
+                <div className="container mx-auto px-6 text-center">
+                    <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900">
+                        THE ABC MEGA QUIZ IS HERE!
+                    </h2>
+                    <p className="text-2xl md:text-3xl font-bold mt-2 mb-4">
+                        Aap Banoge <span className="animated-gradient-text">Crorepati</span>
+                    </p>
+                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                        India's biggest educational quiz tournament. Are you ready for the ultimate challenge?
+                    </p>
+                    <div className="my-10 p-8 countdown-box rounded-2xl max-w-3xl mx-auto shadow-2xl">
+                        <p className="text-xl font-semibold text-gray-700">
+                            Next Mega Quiz Starts In:
+                        </p>
+                        <div id="countdown" className="flex justify-center space-x-2 sm:space-x-4 mt-4 text-gray-900">
+                            <div className="countdown-box p-3 sm:p-4 rounded-lg w-20 sm:w-24">
+                                <div id="days" className="text-3xl sm:text-4xl font-bold">{timeLeft.days}</div>
+                                <div className="text-xs sm:text-sm text-purple-600">Days</div>
+                            </div>
+                            <div className="countdown-box p-3 sm:p-4 rounded-lg w-20 sm:w-24">
+                                <div id="hours" className="text-3xl sm:text-4xl font-bold">{timeLeft.hours}</div>
+                                <div className="text-xs sm:text-sm text-purple-600">Hours</div>
+                            </div>
+                            <div className="countdown-box p-3 sm:p-4 rounded-lg w-20 sm:w-24">
+                                <div id="minutes" className="text-3xl sm:text-4xl font-bold">{timeLeft.minutes}</div>
+                                <div className="text-xs sm:text-sm text-purple-600">Minutes</div>
+                            </div>
+                            <div className="countdown-box p-3 sm:p-4 rounded-lg w-20 sm:w-24">
+                                <div id="seconds" className="text-3xl sm:text-4xl font-bold">{timeLeft.seconds}</div>
+                                <div className="text-xs sm:text-sm text-purple-600">Seconds</div>
+                            </div>
+                        </div>
+                    </div>
+                    {/* The original code uses a simple anchor tag for the CTA */}
+                    <a href="#download" className="cta-button-alt text-white font-bold py-4 px-10 rounded-full text-xl inline-block hover:bg-purple-600">
+                        Register for ABC Quiz Now!
+                    </a>
                 </div>
             </section>
 
@@ -504,7 +628,7 @@ const BrainBucks = () => {
                         </div>
                     </div>
                     <div className="flex justify-center mt-15">
-                    <a href='badges' className="block px-3 py-2 rounded-md text-base font-medium text-white cursor-pointer cta-button">View All Badges &rarr;</a>
+                        <a href='badges' className="block px-3 py-2 rounded-md text-base font-medium text-white cursor-pointer cta-button">View All Badges &rarr;</a>
                     </div>
                 </div>
             </section>
@@ -531,19 +655,19 @@ const BrainBucks = () => {
                         </div>
                     </div>
                     <div className="text-center mt-10">
-                        <a 
-                         onClick={() => window.open(
-                          'https://play.google.com/store/apps/details?id=com.brainbucks.android',
-                          '_blank'
-                        )}
-                         className="cta-button text-white font-bold py-3 px-8 rounded-full text-lg inline-block cursor-pointer">Become a BrainBucks Educator</a>
+                        <a
+                            onClick={() => window.open(
+                                'https://play.google.com/store/apps/details?id=com.brainbucks.android',
+                                '_blank'
+                            )}
+                            className="cta-button text-white font-bold py-3 px-8 rounded-full text-lg inline-block cursor-pointer">Become a BrainBucks Educator</a>
                     </div>
                 </div>
             </section>
 
-             <style dangerouslySetInnerHTML={{ __html: customStyles }}></style>
+            <style dangerouslySetInnerHTML={{ __html: customStyles }}></style>
 
-            <section id="star-educators" className="py-20 hero-bg">
+            <section id="star-educators" className="py-12 hero-bg">
                 <div className="container mx-auto px-6">
                     <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">
                         Meet Our <span className="animated-gradient-text">Star Educators</span>
@@ -552,7 +676,7 @@ const BrainBucks = () => {
                         {educators.map((educator, index) => (
                             <div key={index} className="educator-card text-center p-6 rounded-xl">
                                 <img
-                                    src={`https://placehold.co/120x120/f3e8ff/c026d3?text=${educator.initials}`}
+                                    src={educator.initials}
                                     alt={`Educator ${educator.name}`}
                                     width={120}
                                     height={120}
@@ -566,6 +690,9 @@ const BrainBucks = () => {
                             </div>
                         ))}
                     </div>
+                    <div className="flex justify-center mt-15">
+                        <a href='team' className="block px-3 py-2 rounded-md text-base font-medium text-white cursor-pointer cta-button">View All Educators &rarr;</a>
+                    </div>
                 </div>
             </section>
 
@@ -573,34 +700,44 @@ const BrainBucks = () => {
             <section id="blog" className="py-12 section-bg-alt">
                 <div className="container mx-auto px-6">
                     <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900">From Our <span className="animated-gradient-text">Blog</span></h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div className="card rounded-xl overflow-hidden">
-                            <img src="/public (4).png" width={600} height={400} className="w-full h-48 object-cover" alt="Blog post on study tips" />
-                            <div className="p-6">
-                                <p className="text-sm font-semibold text-purple-700">Study Tips</p>
-                                <h3 className="text-xl font-bold mt-2 mb-4 text-gray-900">5 Killer Strategies to Crack NEET in Your First Attempt</h3>
-                                <a href="readAsSomewhere" className="font-semibold text-pink-600 hover:text-pink-700">Read More &rarr;</a>
-                            </div>
-                        </div>
-                        <div className="card rounded-xl overflow-hidden">
-                            <img src="/public (3).png" width={600} height={400} className="w-full h-48 object-cover" alt="Blog post on motivation" />
-                            <div className="p-6">
-                                <p className="text-sm font-semibold text-purple-700">Motivation</p>
-                                <h3 className="text-xl font-bold mt-2 mb-4 text-gray-900">How Gamification is Making Learning Fun Again</h3>
-                                <a href="readAsSomewhere" className="font-semibold text-pink-600 hover:text-pink-700">Read More &rarr;</a>
-                            </div>
-                        </div>
-                        <div className="card rounded-xl overflow-hidden">
-                            <img src="/public (5).png" width={600} height={400} className="w-full h-48 object-cover" alt="Blog post on a success story" />
-                            <div className="p-6">
-                                <p className="text-sm font-semibold text-purple-700">Success Story</p>
-                                <h3 className="text-xl font-bold mt-2 mb-4 text-gray-900">From Village to Victory: A BrainBucks Winner&apos;s Journey</h3>
-                                <a href="readAsSomewhere" className="font-semibold text-pink-600 hover:text-pink-700">Read More &rarr;</a>
-                            </div>
-                        </div>
+                    <div className="w-full">
+                        <Swiper
+                            modules={[Pagination, Autoplay]}
+                            spaceBetween={32}
+                            slidesPerView={1}
+                            autoplay={{
+                                delay: 3000,
+                                disableOnInteraction: false,
+                            }}
+                            pagination={{ clickable: true }}
+                            breakpoints={{
+                                640: {
+                                    slidesPerView: 2,
+                                    spaceBetween: 20,
+                                },
+                                1024: {
+                                    slidesPerView: 3,
+                                    spaceBetween: 32,
+                                },
+                            }}
+                            className="mySwiper"
+                        >
+                            {blogPosts.map((post, index) => (
+                                <SwiperSlide key={index}>
+                                    <div className="card rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 mb-8">
+                                        <img src={IMAGE_BASE_URL + post?.banner} width={600} height={400} className="w-full h-48 object-cover" alt={`Blog post on ${post.category}`} />
+                                        <div className="p-6">
+                                            <p className="text-sm font-semibold text-purple-700">{post?.scheduleDateTime}</p>
+                                            <h3 className="text-xl font-bold mt-2 mb-4 text-gray-900">{post?.title}</h3>
+                                            <p className="font-semibold text-pink-600 hover:text-pink-700 cursor-pointer"  onClick={()=>{router.push(`/blogs/${post?._id}`)}} >Read More &rarr;</p>
+                                        </div>
+                                    </div>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
                     </div>
                     <div className="flex justify-center mt-15">
-                    <a href='blogs' className="block px-3 py-2 rounded-md text-base font-medium text-white cursor-pointer cta-button">View All Blogs &rarr;</a>
+                        <a href='blogs' className="block px-3 py-2 rounded-md text-base font-medium text-white cursor-pointer cta-button">View All Blogs &rarr;</a>
                     </div>
                 </div>
             </section>
@@ -650,48 +787,7 @@ const BrainBucks = () => {
                 </div>
             </section>
 
-             <style jsx global>{customStyles}</style>
 
-            <section id="abc-quiz" className="py-20 hero-bg">
-                <div className="container mx-auto px-6 text-center">
-                    <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900">
-                        THE ABC MEGA QUIZ IS HERE!
-                    </h2>
-                    <p className="text-2xl md:text-3xl font-bold mt-2 mb-4">
-                        Aap Banoge <span className="animated-gradient-text">Crorepati</span>
-                    </p>
-                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                        India's biggest educational quiz tournament. Are you ready for the ultimate challenge?
-                    </p>
-                    <div className="my-10 p-8 countdown-box rounded-2xl max-w-3xl mx-auto shadow-2xl">
-                        <p className="text-xl font-semibold text-gray-700">
-                            Next Mega Quiz Starts In:
-                        </p>
-                        <div id="countdown" className="flex justify-center space-x-2 sm:space-x-4 mt-4 text-gray-900">
-                            <div className="countdown-box p-3 sm:p-4 rounded-lg w-20 sm:w-24">
-                                <div id="days" className="text-3xl sm:text-4xl font-bold">{timeLeft.days}</div>
-                                <div className="text-xs sm:text-sm text-purple-600">Days</div>
-                            </div>
-                            <div className="countdown-box p-3 sm:p-4 rounded-lg w-20 sm:w-24">
-                                <div id="hours" className="text-3xl sm:text-4xl font-bold">{timeLeft.hours}</div>
-                                <div className="text-xs sm:text-sm text-purple-600">Hours</div>
-                            </div>
-                            <div className="countdown-box p-3 sm:p-4 rounded-lg w-20 sm:w-24">
-                                <div id="minutes" className="text-3xl sm:text-4xl font-bold">{timeLeft.minutes}</div>
-                                <div className="text-xs sm:text-sm text-purple-600">Minutes</div>
-                            </div>
-                            <div className="countdown-box p-3 sm:p-4 rounded-lg w-20 sm:w-24">
-                                <div id="seconds" className="text-3xl sm:text-4xl font-bold">{timeLeft.seconds}</div>
-                                <div className="text-xs sm:text-sm text-purple-600">Seconds</div>
-                            </div>
-                        </div>
-                    </div>
-                    {/* The original code uses a simple anchor tag for the CTA */}
-                    <a href="#download" className="cta-button-alt text-white font-bold py-4 px-10 rounded-full text-xl inline-block hover:bg-purple-600">
-                        Register for ABC Quiz Now!
-                    </a>
-                </div>
-            </section>
 
             {/* Final CTA Section */}
             <section id="download" className="py-20 hero-bg">
@@ -701,11 +797,11 @@ const BrainBucks = () => {
                         Millions of students are already learning and earning with BrainBucks. It&apos;s your turn now!
                     </p>
                     <div className="flex justify-center items-center flex-col sm:flex-row gap-6">
-                        <a 
-                          onClick={() => window.open('https://play.google.com/store/apps/details?id=com.brainbucks.android',
+                        <a
+                            onClick={() => window.open('https://play.google.com/store/apps/details?id=com.brainbucks.android',
                                 '_blank'
-                              )}
-                         className="flex items-center justify-center bg-gray-800 text-white py-3 px-6 rounded-lg border border-gray-600 w-52 hover:bg-black transition-colors cursor-pointer">
+                            )}
+                            className="flex items-center justify-center bg-gray-800 text-white py-3 px-6 rounded-lg border border-gray-600 w-52 hover:bg-black transition-colors cursor-pointer">
                             <svg className="w-8 h-8 mr-3" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M21.25,8.875A1.06,1.06,0,0,0,22,7.75a1,1,0,0,0-1-1,1,1,0,0,0-.75.31l-2.6,2.6V5a1,1,0,0,0-2,0V9.44l-2.47-2.47A1,1,0,0,0,13,7a1,1,0,0,0-1,1,1,1,0,0,0,.25.66L15,11.44l-3,3-1.47-1.47a1,1,0,0,0-1.41,0,1,1,0,0,0,0,1.41L11.59,17l-3,3a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0l3-3,2.75,2.75A1,1,0,0,0,16,21a1,1,0,0,0,1-1,1,1,0,0,0-.31-.75l-2.6-2.6V12l2.47,2.47a1,1,0,0,0,.71.29,1,1,0,0,0,1-1,1,1,0,0,0-.25-.66L15.19,10.25,18,7.44,20.59,10,18,12.56a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0L22,11.41,21.94,11.34,22,11.25a1,1,0,0,0,0-1.41L19.41,7.25,21.25,8.875Z" /><path d="M9.12,9.12,2.29,15.94a1,1,0,0,0,0,1.42,1,1,0,0,0,1.41,0L9.88,11,11,9.88,9.12,9.12Z" /><path d="M11,2.12,9.88,1,3.29,7.59a1,1,0,0,0,0,1.41,1,1,0,0,0,1.41,0L11,2.12Z" /></svg>
                             <div>
                                 <p className="text-xs">GET IT ON</p>
@@ -722,7 +818,7 @@ const BrainBucks = () => {
                     </div>
                 </div>
             </section>
-            <Footer/>
+            <Footer />
         </div>
     );
 };
@@ -755,7 +851,7 @@ export default BrainBucks;
 //                       prizes, and track your rank among{" "}
 //                       <strong>lakhs of students</strong>.
 //                     </p>
-        
+
 //                     <ul className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-3 text-sm">
 //                       <li className="flex items-start gap-3">
 //                         <span className="inline-block mt-1 text-indigo-600">🏆</span>
@@ -784,7 +880,7 @@ export default BrainBucks;
 //                         </div>
 //                       </li>
 //                     </ul>
-        
+
 //                     <div className="mt-8 flex gap-3">
 //                       <Link
 //                         href="#register"
@@ -799,13 +895,13 @@ export default BrainBucks;
 //                         Explore Quizzes
 //                       </Link>
 //                     </div>
-        
+
 //                     <div className="mt-6 text-xs text-gray-500">
 //                       Trusted by <strong>500,000+</strong> students • 24×7 mentorship
 //                       support
 //                     </div>
 //                   </div>
-        
+
 //                   <div>
 //                     <div className="bg-white rounded-2xl shadow-lg p-4">
 //                       <div className="flex items-center justify-between">
@@ -820,7 +916,7 @@ export default BrainBucks;
 //                           <div className="text-lg font-bold">₹1,00000</div>
 //                         </div>
 //                       </div>
-        
+
 //                       <div className="mt-4">
 //                         <img
 //                           src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=abcdef"
@@ -828,14 +924,14 @@ export default BrainBucks;
 //                           className="reel-thumb w-full"
 //                         />
 //                       </div>
-        
+
 //                       <div className="mt-4 flex items-center justify-between text-sm text-gray-600">
 //                         <div>
 //                           Hosted by <strong>CA Natasha Sharma</strong>
 //                         </div>
 //                         <div>Entry ₹20 • 5,000+ players</div>
 //                       </div>
-        
+
 //                       <div className="mt-4 flex gap-2">
 //                         <Link
 //                           href="#join"
@@ -851,7 +947,7 @@ export default BrainBucks;
 //                         </Link>
 //                       </div>
 //                     </div>
-        
+
 //                     <div className="mt-4 grid grid-cols-2 gap-3">
 //                       <div className="bg-white p-3 rounded-lg shadow-sm text-sm">
 //                         <div className="text-xs text-gray-500">Smart Notes</div>
@@ -865,7 +961,7 @@ export default BrainBucks;
 //                   </div>
 //                 </div>
 //               </section>
-        
+
 //               <section id="notes" className="py-12  bg-white text-black">
 //                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 //                   <div className="grid md:grid-cols-3 gap-8">
@@ -887,7 +983,7 @@ export default BrainBucks;
 //                         <li className="flex gap-2 items-center"> <img src="/phone.svg" alt="" />Offline downloads for study on-the-go</li>
 //                       </ul>
 //                     </div>
-        
+
 //                     <div className="bg-white p-6 rounded-xl shadow-sm">
 //                      <div className="mb-2">
 //                       <img src="/FRAME (1).svg" alt="" className="w-15"/>
@@ -905,7 +1001,7 @@ export default BrainBucks;
 //                         <li className="flex gap-2 items-center mb-3"> <img src="/yelloright.svg" alt="" />Auto-transcripts & bookmarks</li>
 //                       </ul>
 //                     </div>
-        
+
 //                     <div className="bg-white p-6 rounded-xl shadow-sm">
 //                      <div className="mb-2">
 //                       <img src="/FRAME (2).svg" alt="" className="w-15"/>
@@ -928,7 +1024,7 @@ export default BrainBucks;
 //                   </div>
 //                 </div>
 //               </section>
-        
+
 //               <section
 //                 id="educators"
 //                 className="py-12 bg-gradient-to-b from-white to-gray-50 text-black"
@@ -940,7 +1036,7 @@ export default BrainBucks;
 //                       View all
 //                     </Link>
 //                   </div>
-        
+
 //                   <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-4">
 //                     {educators.map((educator) => (
 //                       <div
@@ -965,7 +1061,7 @@ export default BrainBucks;
 //                   </div>
 //                 </div>
 //               </section>
-        
+
 //               <section className="py-12  bg-white text-black">
 //                 <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid md:grid-cols-3 gap-8 items-start">
 //                   <div className="md:col-span-2 bg-white p-6 rounded-xl shadow-sm">
@@ -986,7 +1082,7 @@ export default BrainBucks;
 //                       </blockquote>
 //                     </div>
 //                   </div>
-        
+
 //                   <div className="bg-gradient-to-br from-indigo-600 to-purple-600 text-white p-6 rounded-xl shadow-md">
 //                     <div className="flex items-center justify-between">
 //                       <div>
@@ -1001,7 +1097,7 @@ export default BrainBucks;
 //                         <div className="text-sm opacity-80">Smart Notes</div>
 //                       </div>
 //                     </div>
-        
+
 //                     <div className="mt-6 text-sm opacity-90">
 //                       24×7 mentorship support • Trusted educators • Demo lectures &
 //                       special offers
@@ -1009,14 +1105,14 @@ export default BrainBucks;
 //                   </div>
 //                 </div>
 //               </section>
-        
+
 //               <section id="how" className="py-12 bg-white">
 //                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 //                   <h3 className="text-2xl font-bold text-black">How Brain Bucks Works</h3>
 //                   <p className="mt-3 text-gray-600">
 //                     Simple — learn short, revise fast, compete often, win rewards.
 //                   </p>
-        
+
 //                   <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-6 text-black">
 //                     <div className="p-6 bg-gray-50 rounded-xl shadow-[0_4px_20px_rgba(0,0,0,0.15)]">
 //                     <div className="border-t-3 border-[#701DDB] mb-3"></div>
@@ -1048,7 +1144,7 @@ export default BrainBucks;
 //                   </div>
 //                 </div>
 //               </section>
-        
+
 //               <section id="download" className="py-12 bg-white">
 //                 <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center bg-gradient-to-r from-indigo-600 to-purple-500 rounded-2xl p-8">
 //                   <h3 className="text-2xl font-bold text-black">
@@ -1058,7 +1154,7 @@ export default BrainBucks;
 //                     Download the Brain Bucks app and start earning while you learn.
 //                   </p>
 //                   <div className="mt-6 flex items-center justify-center gap-4">
-                    
+
 //                     <a onClick={() => window.open(
 //                     'https://play.google.com/store/apps/details?id=com.brainbucks.android','_blank'
 //                       )}
@@ -1072,7 +1168,7 @@ export default BrainBucks;
 //               </section>
 
 
-          {/* <main className="w-full bg-white text-[#1a1a1a] mt-12">
+{/* <main className="w-full bg-white text-[#1a1a1a] mt-12">
             <section className="flex flex-col-reverse md:flex-row items-center gap-20 justify-between px-4 md:px-16 py-16 bg-white">
               <div className="w-full md:w-1/2 mb-10 md:mb-0">
                 <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight">
@@ -1247,7 +1343,7 @@ export default BrainBucks;
                 <img src="/homefooter.svg" alt="" className="w-full"/>
               </div> */}
 
-           
-        // </>
-    // )
+
+// </>
+// )
 // }
