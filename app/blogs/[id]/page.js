@@ -30,11 +30,11 @@ export default function ParticularBlog(){
         <>
             <div className="mx-auto bg-white">
                   <div className="mx-auto max-w-7xl py-10 px-4">
-                    <div className="flex flex-col md:flex-row justify-center gap-20 mt-14 md:mt-20">
+                    <div className="flex flex-col md:flex-row justify-center gap-0.5 md:gap-20 ">
                     {detailsData?.map((read, index) => (
                      <> <div 
                         key={index}
-                         className="md:w-full lg:w-2/3">
+                         className="md:w-full lg:w-2/3 mt-14 md:mt-20">
                         <h1 className="text-gray-800 text-2xl md:text-5xl">{read?.title}</h1>
                         <div className="flex items-center gap-3 text-gray-400 mt-5">
                          <img src="/logobook.png" alt="" className="w-10"/>
@@ -54,7 +54,7 @@ export default function ParticularBlog(){
                         
                         </div>
                       </div>
-                      <div className="md:w-1/2 lg:w-1/3 mt-10 md:mt-0">
+                      <div className="md:w-1/2 lg:w-1/3 mt-1 md:mt-22">
                         <div className="mb-10">
                           <h1 
                           onClick={()=>{router.push(`/blogs`)}}

@@ -29,9 +29,6 @@ const BrainBucks = () => {
         }
     }
 
-    console.log(blogPosts)
-
-
     useEffect(() => {
         fetchBlogs();
     }, []);

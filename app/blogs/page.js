@@ -69,7 +69,6 @@ export default function AllBlogs() {
   const handleInputChange = (event) => {
     const value = event.target.value;
     setSearchText(value);
-    console.log(value);
   };
 
   return (
