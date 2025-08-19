@@ -528,7 +528,7 @@ const BrainBucks = () => {
             <section id="abc-quiz" className="py-20 hero-bg">
                 <div className="container mx-auto px-6 text-center">
                     <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900">
-                        THE ABC MEGA QUIZ IS HERE!
+                        THE <span className="animated-gradient-text">ABC</span> MEGA QUIZ IS HERE!
                     </h2>
                     <p className="text-2xl md:text-3xl font-bold mt-2 mb-4">
                         Aap Banoge <span className="animated-gradient-text">Crorepati</span>
